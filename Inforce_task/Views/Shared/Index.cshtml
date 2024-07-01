@@ -1,0 +1,29 @@
+﻿@using Inforce_task.Models
+@model IEnumerable<Url>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Original URL</th>
+            <th>Short URL</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var url in Model)
+        {
+            <tr>
+                <td>@url.originalUrl</td>
+                <td>@url.shortUrl</td>
+                <td>@url.createdBy</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@url.id">Details</a> |
+                    <form asp-action="Delete" asp-route-id="@url.id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
